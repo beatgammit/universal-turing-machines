@@ -60,7 +60,7 @@ In order to be complete and accept all possible input, each implementation takes
   * a- symbol at the current head location
   * b- symbol to write to the current head location
   * d- direction to move (L or R, meaning respectively left or right)
-  * r- next state to transition to (0 and 1 are special states, meaning reject and accept respectively)
+  * r- next state to transition to (accept and reject are special states, meaning reject what they imply)
 * input- comma-delimited sequence of input
   * allows implementations to accept strings of arbitrary length as input to a single state
 

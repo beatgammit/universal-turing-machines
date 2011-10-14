@@ -1,0 +1,18 @@
+{
+	"author": "T. Jameson Little <t.jameson.little@gmail.com>",
+	"name": "turing-machine",
+	"description": "Universal Turing Machine implemented in JavaScript",
+	"version": "0.0.0",
+	"repository": {
+		"url": ""
+	},
+	"main": "lib/tm.js",
+	"scripts": {
+		"test": "node test/test.js"
+	},
+	"engines": {
+		"node": "~0.4.10"
+	},
+	"dependencies": {},
+	"devDependencies": {}
+}
