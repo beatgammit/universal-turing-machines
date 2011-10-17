@@ -44,7 +44,10 @@
 
 			cb = (typeof cb === 'function') ? cb : function () {};
 
-			this.tape = new Tape(input);
+			this.input = input.match(/^\s*(.*)\s*$/)[1].split(',');
+
+			// new Tape with copy of input
+			this.tape = new Tape(this.input.slice(0));
 
 			while(state !== 'accept' && state !== 'reject') {
 				trace.push({
@@ -63,6 +66,41 @@
 			});
 
 			return (state === 'accept') ? true : false;
+		},
+		get Γ() {
+			var Γ = [undefined];
+
+			Object.keys(this.states).forEach(function (state) {
+				this.states[state].transitions.forEach(function (transition) {
+					if (Γ.indexOf(transition.output) === -1 && transition.input !== '*') {
+						Γ.push(transition.output);
+					}
+				}, this);
+			}, this);
+
+			this.Σ.forEach(function(symbol) {
+				if (Γ.indexOf(symbol) === -1) {
+					Γ.push(symbol);
+				}
+			});
+
+			return Γ;
+		},
+		get Σ() {
+			var Σ = [];
+
+			Object.keys(this.states).forEach(function (state) {
+				this.states[state].transitions.forEach(function (transition) {
+					// only count input characters
+					if (Σ.indexOf(transition.input) === -1 && transition.input !== '*') {
+						Σ.push(transition.input);
+					}
+				});
+			}, this);
+
+			return Σ;
+		},
+		verify: function () {
 		}
 	};
 

@@ -2,7 +2,7 @@
 	'use strict';
 
 	function Tape(input) {
-		this._tape = input.match(/^\s*(.*)\s*$/)[1].split(',');
+		this._tape = input;
 		this._head = 0;
 	}
 
